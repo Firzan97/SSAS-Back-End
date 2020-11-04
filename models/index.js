@@ -21,5 +21,12 @@ Fs.readdirSync(__dirname)
     });
 
 db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
+
+Object.keys(db).forEach(key => {
+    if (db[key] && db[key].associate) {
+        db[key].associate(db);
+    }
+});
 module.exports = db

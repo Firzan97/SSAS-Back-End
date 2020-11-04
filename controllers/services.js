@@ -1,19 +1,19 @@
 var Model = require("../models")
 
-const services = {
-    getAllService: async(request, response) => {
-        let services = [];
+const users = {
+    getAllUser: async(request, response) => {
+        let users = [];
         try {
-            services = await Model.Services.findAll();
+            users = await Model.Users.findAll();
         } catch (error) {
             console.log(error);
         }
-        response.json(services);
+        response.json(users);
     },
-    getService: async(request, response) => {
-        let services = [];
+    getUser: async(request, response) => {
+        let users = [];
         try {
-            services = await Model.Services.findAll({
+            users = await Model.Users.findAll({
                 where: {
                     id: request.params.id
                 }
@@ -23,10 +23,10 @@ const services = {
         }
         response.json(users);
     },
-    updateService: async(request, response) => {
-        let services = [];
+    updateUser: async(request, response) => {
+        let users = [];
         try {
-            services = await Model.Services.update({
+            users = await Model.Users.update({
                 name: request.body.name,
                 age: request.body.age
             }, {
@@ -37,12 +37,12 @@ const services = {
         } catch (error) {
             console.log(error);
         }
-        response.json(services);
+        response.json(users);
     },
-    createService: async(request, response) => {
-        let services = [];
+    createUser: async(request, response) => {
+        let users = [];
         try {
-            services = await Model.Services.create({
+            users = await Model.Users.create({
                 name: request.body.name,
                 age: request.body.age
             }, {
@@ -53,12 +53,12 @@ const services = {
         } catch (error) {
             console.log(error);
         }
-        response.json(services);
+        response.json(users);
     },
-    deleteService: async(req, res) => {
+    deleteUser: async(req, res) => {
         console.log(req.params.id)
 
-        await Model.Services.destroy({
+        await Model.Users.destroy({
             where: {
                 id: req.params.id
             }
@@ -69,4 +69,4 @@ const services = {
     },
 }
 
-module.exports = services
+module.exports = users

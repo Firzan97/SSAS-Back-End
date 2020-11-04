@@ -4,5 +4,10 @@ module.exports = (sequelize, DataTypes) => {
         age: DataTypes.STRING,
         password: DataTypes.STRING,
     });
+
+    Users.associate = function(models) {
+        Users.hasMany(models.Appointments);
+    }
+
     return Users;
 }
