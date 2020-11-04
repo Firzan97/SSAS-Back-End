@@ -4,7 +4,11 @@ const users = {
     getAllUser: async(request, response) => {
         let users = [];
         try {
-            users = await Model.Users.findAll();
+            users = await Model.Users.findAll({
+                where: {
+                    role: request.params.role
+                }
+            });
         } catch (error) {
             console.log(error);
         }
@@ -15,6 +19,7 @@ const users = {
         try {
             users = await Model.Users.findAll({
                 where: {
+                    role: request.params.role,
                     id: request.params.id
                 }
             });
@@ -31,6 +36,7 @@ const users = {
                 age: request.body.age
             }, {
                 where: {
+                    role: request.params.role,
                     id: request.params.id
                 }
             });
@@ -44,11 +50,8 @@ const users = {
         try {
             users = await Model.Users.create({
                 name: request.body.name,
-                age: request.body.age
-            }, {
-                where: {
-                    id: request.params.id
-                }
+                age: request.body.age,
+                role: request.body.role
             });
         } catch (error) {
             console.log(error);
@@ -60,6 +63,7 @@ const users = {
 
         await Model.Users.destroy({
             where: {
+                role: request.params.role,
                 id: req.params.id
             }
         })

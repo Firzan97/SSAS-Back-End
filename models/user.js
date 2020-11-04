@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Users.associate = function(models) {
-        Users.hasMany(models.Appointments);
+        Users.hasMany(models.Appointments, {
+            foreignKey: 'doctorId'
+        });
         Users.hasOne(models.Staffs);
         Users.hasOne(models.Admins);
         Users.hasOne(models.Patients);

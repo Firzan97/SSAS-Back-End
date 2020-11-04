@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Patients = sequelize.define('Patients', {
         ic: DataTypes.STRING,
+        phoneNum: DataTypes.STRING,
         desease: DataTypes.STRING,
     });
 
