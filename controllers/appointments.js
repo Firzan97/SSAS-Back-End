@@ -1,19 +1,19 @@
 var Model = require("../models")
 
-const services = {
-    getAllService: async(request, response) => {
-        let services = [];
+const appointments = {
+    getAllAppointment: async(request, response) => {
+        let appointments = [];
         try {
-            users = await Model.Services.findAll();
+            appointments = await Model.Appointments.findAll();
         } catch (error) {
             console.log(error);
         }
-        response.json(services);
+        response.json(appointments);
     },
-    getService: async(request, response) => {
-        let services = [];
+    getAppointment: async(request, response) => {
+        let appointments = [];
         try {
-            services = await Model.Services.findAll({
+            appointments = await Model.Appointments.findAll({
                 where: {
                     id: request.params.id
                 }
@@ -21,12 +21,12 @@ const services = {
         } catch (error) {
             console.log(error);
         }
-        response.json(users);
+        response.json(appointments);
     },
     updateService: async(request, response) => {
-        let services = [];
+        let appointments = [];
         try {
-            services = await Model.Services.update({
+            appointments = await Model.Appointments.update({
                 name: request.body.name,
                 age: request.body.age
             }, {
@@ -37,12 +37,12 @@ const services = {
         } catch (error) {
             console.log(error);
         }
-        response.json(services);
+        response.json(appointments);
     },
-    createUser: async(request, response) => {
-        let services = [];
+    createAppointment: async(request, response) => {
+        let appointments = [];
         try {
-            users = await Model.Services.create({
+            appointments = await Model.Appointments.create({
                 name: request.body.name,
                 age: request.body.age
             }, {
@@ -53,12 +53,12 @@ const services = {
         } catch (error) {
             console.log(error);
         }
-        response.json(services);
+        response.json(appointments);
     },
-    deleteService: async(req, res) => {
+    deleteAppointment: async(req, res) => {
         console.log(req.params.id)
 
-        await Model.Services.destroy({
+        await Model.appointments.destroy({
             where: {
                 id: req.params.id
             }
@@ -69,4 +69,4 @@ const services = {
     },
 }
 
-module.exports = services
+module.exports = appointments
