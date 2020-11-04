@@ -6,6 +6,8 @@ var Model = require("./models");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var appointmentRouter = require('./routes/appointment');
+var serviceRouter = require('./routes/service');
 
 var app = express();
 
@@ -19,8 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 Model.sequelize.sync();
 app.use('/', indexRouter);
-
 app.use('/', usersRouter);
+app.use('/appointment', appointmentRouter);
+app.use('/service', serviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

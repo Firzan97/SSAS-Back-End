@@ -23,12 +23,16 @@ const appointments = {
         }
         response.json(appointments);
     },
-    updateService: async(request, response) => {
+    updateAppointment: async(request, response) => {
         let appointments = [];
         try {
             appointments = await Model.Appointments.update({
-                name: request.body.name,
-                age: request.body.age
+                regTime: request.body.regTime,
+                regDate: request.body.regDate,
+                status: request.body.status,
+                UserId: request.body.UserId,
+                ServiceId: request.body.UserId,
+                doctorId: request.body.doctorId,
             }, {
                 where: {
                     id: request.params.id
@@ -43,12 +47,13 @@ const appointments = {
         let appointments = [];
         try {
             appointments = await Model.Appointments.create({
-                name: request.body.name,
-                age: request.body.age
-            }, {
-                where: {
-                    id: request.params.id
-                }
+                regTime: request.body.regTime,
+                regDate: request.body.regDate,
+                status: "pending",
+                UserId: request.body.UserId,
+                ServiceId: request.body.UserId,
+                doctorId: request.body.doctorId,
+
             });
         } catch (error) {
             console.log(error);
