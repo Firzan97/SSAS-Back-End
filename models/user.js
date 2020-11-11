@@ -1,8 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
     const Users = sequelize.define('Users', {
-        name: DataTypes.STRING,
+        username: DataTypes.STRING,
+        email: DataTypes.STRING,
         age: DataTypes.STRING,
         role: DataTypes.STRING,
+        fullname: DataTypes.STRING,
+        age: DataTypes.INTEGER,
+        phonenumber: DataTypes.STRING,
         password: DataTypes.STRING,
     });
 
@@ -10,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         Users.hasMany(models.Appointments, {
             foreignKey: 'doctorId'
         });
-        Users.hasOne(models.Staffs);
-        Users.hasOne(models.Admins);
-        Users.hasOne(models.Patients);
+        Users.hasOne(models.Staffs, { foreignKey: 'user_id' });
+        Users.hasOne(models.Admins, { foreignKey: 'user_id' });
+        Users.hasOne(models.Patients, { foreignKey: 'user_id' });
 
 
     }

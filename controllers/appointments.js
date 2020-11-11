@@ -51,9 +51,8 @@ const appointments = {
                 regDate: request.body.regDate,
                 status: "pending",
                 UserId: request.body.UserId,
-                ServiceId: request.body.UserId,
+                // ServiceId: 2,
                 doctorId: request.body.doctorId,
-
             });
         } catch (error) {
             console.log(error);

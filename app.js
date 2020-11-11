@@ -3,13 +3,20 @@ var express = require('express');
 var path = require('path');
 const env = require('dotenv').config();
 var Model = require("./models");
-
+const session = require('express-session');
+const flash = require('connect-flash');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var appointmentRouter = require('./routes/appointment');
 var serviceRouter = require('./routes/service');
+var staffsRouter = require('./routes/staff');
+
 
 var app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 Model.sequelize.sync();
 app.use('/', indexRouter);
-app.use('/', usersRouter);
+app.use('/user', usersRouter);
+app.use('/staff', staffsRouter);
 app.use('/appointment', appointmentRouter);
 app.use('/service', serviceRouter);
 
