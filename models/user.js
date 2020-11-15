@@ -12,9 +12,12 @@ module.exports = (sequelize, DataTypes) => {
 
     Users.associate = function(models) {
         Users.hasMany(models.Appointments, {
+            foreignKey: 'patientId'
+        });
+        Users.hasMany(models.Appointments, {
             foreignKey: 'doctorId'
         });
-        Users.hasOne(models.Staffs, { foreignKey: 'user_id' });
+        Users.hasOne(models.Doctors, { foreignKey: 'user_id' });
         Users.hasOne(models.Admins, { foreignKey: 'user_id' });
         Users.hasOne(models.Patients, { foreignKey: 'user_id' });
 

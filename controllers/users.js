@@ -59,9 +59,9 @@ const users = {
                 age: request.body.age,
                 password: bcrypt.hashSync(request.body.password, 8)
             });
-            if (request.params.role == "staff") {
+            if (request.params.role == "Doctor") {
 
-                await Model.Staffs.create({
+                await Model.Doctors.create({
                     speciality: request.body.speciality,
                     user_id: users.id,
                 });
@@ -89,7 +89,6 @@ const users = {
 
         await Model.Users.destroy({
             where: {
-                role: request.params.role,
                 id: req.params.id
             }
         })
@@ -97,10 +96,10 @@ const users = {
             status: "Success"
         })
     },
-    getStaff: async(request, response) => {
-        let users = [];
+    getDoctor: async(request, response) => {
+        let doctors = [];
         try {
-            users = await Model.Staff.findAll({
+            doctors = await Model.Doctors.findAll({
                 where: {
                     speciality: request.params.speciality
                 }
@@ -111,7 +110,7 @@ const users = {
         response.json(request.params.speciality);
     },
     getUserAppointment: async(request, response) => {
-        let users, apppointment = [];
+        let users, appointment = [];
         try {
             users = await Model.Patients.findOne({
                 where: {
@@ -120,7 +119,7 @@ const users = {
             });
             appointment = await Model.Appointments.findAll({
                 where: {
-                    UserId: users.id
+                    patientId: users.id
                 }
             });
 

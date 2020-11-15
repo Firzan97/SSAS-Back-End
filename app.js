@@ -11,7 +11,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var appointmentRouter = require('./routes/appointment');
 var serviceRouter = require('./routes/service');
-var staffsRouter = require('./routes/staff');
+var staffsRouter = require('./routes/doctor');
+var patientsRouter = require('./routes/patient');
 
 
 var app = express();
@@ -28,10 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 Model.sequelize.sync();
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
-app.use('/staff', staffsRouter);
-app.use('/appointment', appointmentRouter);
-app.use('/service', serviceRouter);
+app.use('/User', usersRouter);
+app.use('/Patient', patientsRouter);
+app.use('/Doctor', staffsRouter);
+app.use('/Appointment', appointmentRouter);
+app.use('/Service', serviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

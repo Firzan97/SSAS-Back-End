@@ -28,9 +28,9 @@ const appointments = {
         try {
             appointments = await Model.Appointments.update({
                 regTime: request.body.regTime,
-                regDate: request.body.regDate,
+                regDate: request.body.regDates,
                 status: request.body.status,
-                UserId: request.body.UserId,
+                patientId: request.body.UserId,
                 ServiceId: request.body.UserId,
                 doctorId: request.body.doctorId,
             }, {
@@ -49,9 +49,9 @@ const appointments = {
             appointments = await Model.Appointments.create({
                 regTime: request.body.regTime,
                 regDate: request.body.regDate,
-                status: "pending",
-                UserId: request.body.UserId,
-                // ServiceId: 2,
+                status: request.body.status,
+                patientId: request.body.patientId,
+                ServiceId: request.body.ServiceId,
                 doctorId: request.body.doctorId,
             });
         } catch (error) {
@@ -62,7 +62,7 @@ const appointments = {
     deleteAppointment: async(req, res) => {
         console.log(req.params.id)
 
-        await Model.appointments.destroy({
+        await Model.Appointments.destroy({
             where: {
                 id: req.params.id
             }

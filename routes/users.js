@@ -7,10 +7,10 @@ router.get('/:role', usersController.getAllUser);
 router.get('/:role/:id', usersController.getUser);
 router.post('/:role', usersController.createUser);
 router.patch('/:role/:id', usersController.updateUser);
-router.delete('/:role/:id', usersController.deleteUser);
+router.delete('/:id', usersController.deleteUser);
 
 
-router.get('/staff/:speciality', usersController.getStaff);
-router.get('/:role/:id/appointment', usersController.getUserAppointment);
+router.get('/Doctor/:speciality', usersController.getDoctor);
+router.get('/Patient/:id/Appointment', usersController.getUserAppointment);
 
 module.exports = router;

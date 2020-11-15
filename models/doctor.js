@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Staffs = sequelize.define('Staffs', {
+    const Doctors = sequelize.define('Doctors', {
         speciality: DataTypes.STRING,
     }, {
         indexes: [
@@ -11,9 +11,13 @@ module.exports = (sequelize, DataTypes) => {
         ]
     });
 
-    Staffs.associate = function(models) {
-        Staffs.belongsTo(models.Users, { foreignKey: 'user_id' });
+    Doctors.associate = function(models) {
+        Doctors.belongsTo(models.Users, {
+            foreignKey: 'user_id',
+            foreignKeyConstraint: true,
+            onDelete: 'cascade'
+        });
     }
 
-    return Staffs;
+    return Doctors;
 }

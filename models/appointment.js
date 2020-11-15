@@ -6,8 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Appointments.associate = function(models) {
-        Appointments.belongsTo(models.Users);
-        Appointments.belongsTo(models.Users);
+        Appointments.belongsTo(models.Users, {
+            foreignKey: 'patientId'
+        });
+        Appointments.belongsTo(models.Users, {
+            foreignKey: 'doctorId'
+        });
+
         Appointments.belongsTo(models.Services)
     }
 

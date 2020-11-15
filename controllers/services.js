@@ -45,10 +45,6 @@ const services = {
             services = await Model.Services.create({
                 type: request.body.type,
                 cost: request.body.cost
-            }, {
-                where: {
-                    id: request.params.id
-                }
             });
         } catch (error) {
             console.log(error);

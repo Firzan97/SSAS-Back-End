@@ -48,7 +48,6 @@ const users = {
                     error: "wrong email"
                 })
             } else {
-                console.log(users.id)
                 let token = jwt.sign({ userId: users.id }, 'secretkey');
                 return response.status(200).json({
                     title: "Login Success",
