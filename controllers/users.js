@@ -112,7 +112,7 @@ const users = {
     getUserAppointment: async(request, response) => {
         let users, appointment = [];
         try {
-            users = await Model.Patients.findOne({
+            users = await Model.Users.findOne({
                 where: {
                     id: request.params.id
                 }
