@@ -49,11 +49,13 @@ const users = {
                 }
             });
             if (users.length == 0) {
+
                 return response.status(400).json({
                     title: "error",
                     error: "wrong email"
                 })
             } else {
+
                 for (var i = 0; i < users.length; i++) {
                     const isSame = await bcrypt.compare(request.body.password, users[i].password)
 
