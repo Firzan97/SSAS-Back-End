@@ -27,7 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-Model.sequelize.sync();
 app.use('/', indexRouter);
 app.use('/User', usersRouter);
 app.use('/Patient', patientsRouter);
